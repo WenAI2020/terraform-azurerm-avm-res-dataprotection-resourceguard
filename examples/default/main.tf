@@ -12,10 +12,10 @@ provider "azurerm" {
   features {
     resource_group {
       prevent_deletion_if_contains_resources = false
-    }    
+    }
   }
   subscription_id = "eeed4cd0-013c-43a7-8e45-dd765abaff2c"
- # resource_provider_registrations = "all"
+  # resource_provider_registrations = "all"
 }
 
 locals {
@@ -25,21 +25,21 @@ locals {
     "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete"
   ]
   tags = {
-    scenario  = "Default"
-    project   = "AVM"
-    delete    = "yes"
+    scenario = "Default"
+    project  = "AVM"
+    delete   = "yes"
   }
-  resource_group_id = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
+  resource_group_id   = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
   resource_group_name = "firstavmrg"
-  name = "commitregu"
+  name                = "commitregu"
 }
 
-module "default"{
-    source = "../../"
-    name = local.name
-    location = local.location
-    vault_critical_operation_exclusion_list = local.vault_critical_operation_exclusion_list
-    resource_group_name = local.resource_group_name
-    resource_group_id = local.resource_group_id
-    tags = local.tags
+module "default" {
+  source                                  = "../../"
+  name                                    = local.name
+  location                                = local.location
+  vault_critical_operation_exclusion_list = local.vault_critical_operation_exclusion_list
+  resource_group_name                     = local.resource_group_name
+  resource_group_id                       = local.resource_group_id
+  tags                                    = local.tags
 }

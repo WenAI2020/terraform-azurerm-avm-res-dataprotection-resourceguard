@@ -7,13 +7,13 @@ resource "azapi_resource" "regu" {
       "vaultCriticalOperationExclusionList" : var.vault_critical_operation_exclusion_list
     }
   }
-  name                      = var.name
-  parent_id                 = var.resource_group_id
- 
+  name      = var.name
+  parent_id = var.resource_group_id
+
   timeouts {
     create = "1h30m"
     delete = "20m"
-  }  
+  }
 }
 
 # required AVM resources interfaces
