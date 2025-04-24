@@ -16,24 +16,16 @@ variable "name" {
   }
 }
 
-# This is required for most resource modules
-variable "resource_group_name" {
-  type        = string
-  description = "The resource group where the resources will be deployed."
-}
 #Add this for parent id in azapi_resource
 variable "resource_group_id" {
   type        = string
   description = "The resource group id where the resources will be deployed."
 }
 
-# required AVM interfaces
-variable "vault_critical_operation_exclusion_list" {
-  type        = set(string)
-  default     = null
-  description = <<DESCRIPTION
-Operations that will be exempted from the resource guard
-DESCRIPTION  
+# This is required for most resource modules
+variable "resource_group_name" {
+  type        = string
+  description = "The resource group where the resources will be deployed."
 }
 
 variable "enable_telemetry" {
@@ -66,7 +58,6 @@ DESCRIPTION
   }
 }
 
-
 variable "role_assignments" {
   type = map(object({
     role_definition_id_or_name             = string
@@ -98,4 +89,13 @@ variable "tags" {
   type        = map(string)
   default     = null
   description = "(Optional) Tags of the resource."
+}
+
+# required AVM interfaces
+variable "vault_critical_operation_exclusion_list" {
+  type        = set(string)
+  default     = null
+  description = <<DESCRIPTION
+Operations that will be exempted from the resource guard
+DESCRIPTION  
 }
