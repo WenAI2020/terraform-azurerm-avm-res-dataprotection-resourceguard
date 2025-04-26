@@ -22,12 +22,6 @@ variable "resource_group_id" {
   description = "The resource group id where the resources will be deployed."
 }
 
-# This is required for most resource modules
-variable "resource_group_name" {
-  type        = string
-  description = "The resource group where the resources will be deployed."
-}
-
 variable "enable_telemetry" {
   type        = bool
   default     = true

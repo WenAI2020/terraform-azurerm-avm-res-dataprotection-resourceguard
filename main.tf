@@ -1,4 +1,4 @@
-resource "azapi_resource" "regu" {
+resource "azapi_resource" "resource_guard" {
   type = "Microsoft.DataProtection/ResourceGuards@2022-05-01"
   body = {
     "location" : var.location,
