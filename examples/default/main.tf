@@ -19,10 +19,10 @@ provider "azurerm" {
 }
 
 locals {
-  enable_telemetry    = true
-  location            = "southeastasia"
-  name                = "commitregu"
-  resource_group_id   = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
+  enable_telemetry  = true
+  location          = "southeastasia"
+  name              = "fixresourceguard"
+  resource_group_id = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
   tags = {
     scenario = "Default"
     project  = "AVM"
