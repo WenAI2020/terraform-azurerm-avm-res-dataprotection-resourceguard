@@ -23,7 +23,6 @@ locals {
   location            = "southeastasia"
   name                = "commitregu"
   resource_group_id   = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
-  resource_group_name = "firstavmrg"
   tags = {
     scenario = "Default"
     project  = "AVM"
@@ -39,7 +38,6 @@ module "default" {
   name                                    = local.name
   location                                = local.location
   vault_critical_operation_exclusion_list = local.vault_critical_operation_exclusion_list
-  resource_group_name                     = local.resource_group_name
   resource_group_id                       = local.resource_group_id
   tags                                    = local.tags
 }
