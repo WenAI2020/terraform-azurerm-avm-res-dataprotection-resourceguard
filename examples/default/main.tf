@@ -14,14 +14,13 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
-  subscription_id = "eeed4cd0-013c-43a7-8e45-dd765abaff2c"
+  #subscription_id = "09d7d81e-6d46-407a-82be-1b80d1e861d6"
   # resource_provider_registrations = "all"
 }
 
 locals {
   location          = "southeastasia"
   name              = "fixresourceguard"
-  resource_group_id = "/subscriptions/eeed4cd0-013c-43a7-8e45-dd765abaff2c/resourceGroups/firstavmrg"
   tags = {
     scenario = "Default"
     project  = "AVM"
@@ -32,11 +31,16 @@ locals {
   ]
 }
 
+resource "azurerm_resource_group" "avmrg" {
+  location = local.location
+  name     = "avmrg"
+}
+
 module "default" {
   source                                  = "../../"
   name                                    = local.name
   location                                = local.location
   vault_critical_operation_exclusion_list = local.vault_critical_operation_exclusion_list
-  resource_group_id                       = local.resource_group_id
+  resource_group_id                       = azurerm_resource_group.avmrg.id
   tags                                    = local.tags
 }
